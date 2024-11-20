@@ -5,6 +5,7 @@
 
 [node name="MuizGame" type="Node2D" node_paths=PackedStringArray("bomb_timer")]
 script = ExtResource("1_i230i")
+game_length = 10
 bomb_timer = NodePath("BombTimer")
 
 [node name="BombTimer" parent="." instance=ExtResource("2_yw6yt")]
