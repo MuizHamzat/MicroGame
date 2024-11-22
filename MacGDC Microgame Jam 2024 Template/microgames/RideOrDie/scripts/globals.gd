@@ -1,3 +1,3 @@
 extends Node
 
-var test_pos = 5
+var player_pos: Vector2
