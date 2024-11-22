@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4k1fqeu8ndjf"]
 
-[ext_resource type="Script" path="res://microgames/RideOrDie/enemy.gd" id="1_unqc6"]
+[ext_resource type="Script" path="res://microgames/RideOrDie/scripts/enemy.gd" id="1_unqc6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 
