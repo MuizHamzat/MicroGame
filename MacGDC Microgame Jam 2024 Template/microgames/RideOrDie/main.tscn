@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://xs30e7u5ifhw"]
+[gd_scene load_steps=2 format=3 uid="uid://xs30e7u5ifhw"]
+
+[ext_resource type="PackedScene" uid="uid://ddhoio73023ba" path="res://scenes/main/bomb_timer/bomb_timer.tscn" id="1_4h2vg"]
 
 [node name="Main" type="Node2D"]
+
+[node name="BombTimer" parent="." instance=ExtResource("1_4h2vg")]
+position = Vector2(70, 351)
