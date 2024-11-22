@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4k1fqeu8ndjf"]
+[gd_scene load_steps=5 format=3 uid="uid://d4k1fqeu8ndjf"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/enemy.gd" id="1_unqc6"]
+[ext_resource type="Texture2D" uid="uid://dflbdb1yabbyl" path="res://microgames/RideOrDie/sprites/Enemy.png" id="2_53v5j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_53v5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xhav"]
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(290, 158)
+position = Vector2(534, 184)
 script = ExtResource("1_unqc6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
