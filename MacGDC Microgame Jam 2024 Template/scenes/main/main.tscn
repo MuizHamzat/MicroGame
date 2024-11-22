@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_c1cp2"]
 [ext_resource type="PackedScene" uid="uid://xs30e7u5ifhw" path="res://microgames/RideOrDie/main.tscn" id="2_i1u8s"]
+
 [ext_resource type="Texture2D" uid="uid://e4lvvaf2h0ca" path="res://scenes/main/sprites/door_left.png" id="3_1sdq5"]
 [ext_resource type="Texture2D" uid="uid://bjbil5iohc57a" path="res://scenes/main/sprites/room.png" id="3_y1h6j"]
 [ext_resource type="Texture2D" uid="uid://c577jxgsebcnh" path="res://scenes/main/sprites/control.png" id="4_gv218"]
@@ -1148,6 +1149,7 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_c1cp2")
+
 microgames = Array[PackedScene]([ExtResource("2_i1u8s")])
 
 [node name="Room" type="Node2D" parent="."]
