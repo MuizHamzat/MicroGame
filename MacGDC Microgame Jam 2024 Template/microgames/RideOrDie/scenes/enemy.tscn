@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/enemy.gd" id="1_unqc6"]
 [ext_resource type="Texture2D" uid="uid://dflbdb1yabbyl" path="res://microgames/RideOrDie/sprites/Enemy.png" id="2_53v5j"]
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 animations = [{
 "frames": [{
@@ -17,8 +18,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xhav"]
 
 [node name="Enemy" type="CharacterBody2D"]
+<<<<<<< HEAD
 position = Vector2(534, 184)
 script = ExtResource("1_unqc6")
+=======
+position = Vector2(290, 158)
+script = ExtResource("1_sko4m")
+>>>>>>> d05945444f97e51594b743f5fa393cf6ef49f377
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e75uo")
