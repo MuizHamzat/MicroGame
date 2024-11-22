@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv7qqj1ij8umf"]
+[gd_scene load_steps=5 format=3 uid="uid://vsvncq4uj16l"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hmefm"]
+[ext_resource type="Script" path="res://microgames/RideOrDie/player.gd" id="1_olcur"]
+[ext_resource type="Texture2D" uid="uid://ltkt73u65elj" path="res://microgames/RideOrDie/sprites/Player.png" id="2_oish5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didm8"]
+size = Vector2(24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmefm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oish5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_hmefm")
+position = Vector2(134, 199)
+motion_mode = 1
+script = ExtResource("1_olcur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_didm8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hmefm")
