@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/main.gd" id="1_lidmc"]
 [ext_resource type="PackedScene" uid="uid://bv7qqj1ij8umf" path="res://microgames/RideOrDie/scenes/player.tscn" id="3_o8gma"]
 [ext_resource type="PackedScene" uid="uid://d4k1fqeu8ndjf" path="res://microgames/RideOrDie/scenes/enemy.tscn" id="4_6ujcx"]
-[ext_resource type="PackedScene" path="res://microgames/RideOrDie/scenes/prize.tscn" id="5_5j4p5"]
+[ext_resource type="PackedScene" uid="uid://cyak52qexjrux" path="res://microgames/RideOrDie/scenes/prize.tscn" id="5_5j4p5"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("bomb_timer")]
 script = ExtResource("1_lidmc")
