@@ -33,3 +33,5 @@ shape = SubResource("RectangleShape2D_6xhav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("CircleShape2D_uhhmj")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
