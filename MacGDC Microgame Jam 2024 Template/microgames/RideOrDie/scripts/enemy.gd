@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 @onready var target
-var target_alive = true;
+
 var speed = 150
+var game_over = false
 
 signal kill
 
 func _physics_process(delta):
-	if target_alive and not Globals.coin_collected:
+	if not game_over:
 		var direction = (target.position-position).normalized()
 		velocity = direction * speed
 		look_at(target.position) #This makes the enemy actually face the player
@@ -20,14 +21,10 @@ func _physics_process(delta):
 
 func set_player(player_node: CharacterBody2D):
 	target = player_node
-	target.player_death.connect(_on_player_death)
 
-func _on_player_death():
-	target_alive = false
 
 func _on_kill_zone_body_entered(body):
 	if body.is_in_group("Player"):
-		target_alive = false
 		body.death()
 		kill.emit()
 	

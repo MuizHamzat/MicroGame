@@ -21,6 +21,7 @@ position = Vector2(571, 176)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[connection signal="game_over_signal" from="." to="." method="_on_game_over_signal"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="collect" from="prize" to="." method="_on_prize_collect"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 var screen_size
 const SPEED = 300.0
+var game_over = false
 
 signal player_death
 
@@ -15,42 +16,42 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed("keyboard_down"):
-		velocity.y += 1;
-	if Input.is_action_pressed("keyboard_up"):
-		velocity.y -= 1;
-	if Input.is_action_pressed("keyboard_left"):
-		velocity.x -= 1;
-	if Input.is_action_pressed("keyboard_right"):
-		velocity.x += 1;
+	if not game_over:
+		if Input.is_action_pressed("keyboard_down"):
+			velocity.y += 1;
+		if Input.is_action_pressed("keyboard_up"):
+			velocity.y -= 1;
+		if Input.is_action_pressed("keyboard_left"):
+			velocity.x -= 1;
+		if Input.is_action_pressed("keyboard_right"):
+			velocity.x += 1;
+			
+		# Attack
+		if Input.is_action_pressed("keyboard_action") and attackCooldown.is_stopped():
+			#play here animation
+			$hitbox/CollisionShape2D.disabled = false
+			#Start cooldown and duration timer
+			attackCooldown.start()
+			attackDuration.start()
 		
-	# Attack
-	if Input.is_action_pressed("keyboard_action") and attackCooldown.is_stopped():
-		#play here animation
-		$hitbox/CollisionShape2D.disabled = false
-		#Start cooldown and duration timer
-		attackCooldown.start()
-		attackDuration.start()
-	
-	# Normalizing the speed so diagonal isnt faster (can add animation after :))
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * SPEED
-		#$AnimatedSprite2D.play()
-	#else:
-		#$AnimatedSprite2D.stop()
+		# Normalizing the speed so diagonal isnt faster (can add animation after :))
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * SPEED
+			#$AnimatedSprite2D.play()
+		#else:
+			#$AnimatedSprite2D.stop()
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_slide()
 
 func death():
-	print("Player killed")
+	#Emit death signal to let other nodes know player is dead (namely enemies)
 	player_death.emit()
 	queue_free()
 
 
 func kill(object):
-	print("Enemy has been slayed")
 	object.queue_free()
 
 

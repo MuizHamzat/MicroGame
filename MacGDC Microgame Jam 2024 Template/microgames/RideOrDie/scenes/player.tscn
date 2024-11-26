@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_dowau")
 one_shot = true
 
 [node name="AttackDuration" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
