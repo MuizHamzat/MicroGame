@@ -23,3 +23,4 @@ position = Vector2(70, 351)
 position = Vector2(571, 176)
 
 [connection signal="kill" from="Enemy" to="." method="_on_player_killed"]
+[connection signal="collect" from="prize" to="." method="_on_prize_collect"]
