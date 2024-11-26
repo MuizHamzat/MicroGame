@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
 @onready var hitbox = $hitbox
-@onready var attack = $Attack
+@onready var attackCooldown = $AttackCooldown
+@onready var attackDuration = $AttackDuration
 
 var screen_size
 const SPEED = 300.0
-var can_attack = true
 
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$hitbox/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
@@ -23,10 +24,12 @@ func _physics_process(delta):
 		velocity.x += 1;
 		
 	# Attack
-	if Input.is_action_pressed("keyboard_action") and can_attack:
+	if Input.is_action_pressed("keyboard_action") and attackCooldown.is_stopped():
 		#play here animation
-		can_attack = false
-		attack.start()
+		$hitbox/CollisionShape2D.disabled = false
+		#Start cooldown and duration timer
+		attackCooldown.start()
+		attackDuration.start()
 	
 	# Normalizing the speed so diagonal isnt faster (can add animation after :))
 	if velocity.length() > 0:
@@ -49,10 +52,11 @@ func kill(object):
 	object.queue_free()
 
 
-func _on_attack_timeout():
-	can_attack = true
-
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
 		kill(body)
+
+
+func _on_attack_duration_timeout():
+	$hitbox/CollisionShape2D.set_deferred("disabled", true)

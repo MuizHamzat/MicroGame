@@ -36,8 +36,13 @@ sprite_frames = SubResource("SpriteFrames_hmefm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_dowau")
 
-[node name="Attack" type="Timer" parent="."]
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Attack" to="." method="_on_attack_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
