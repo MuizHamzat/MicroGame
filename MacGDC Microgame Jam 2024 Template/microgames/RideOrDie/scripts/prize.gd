@@ -6,8 +6,9 @@ signal collect
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Makes the coin stick to the enemy
-	if ():
-		position = gold_enemy.position
+	pass
+	#if ():
+		#position = gold_enemy.position
 
 
 func _on_body_entered(body):
