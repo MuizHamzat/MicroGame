@@ -25,6 +25,9 @@ position = Vector2(571, 177)
 [node name="prize" parent="." instance=ExtResource("5_5j4p5")]
 position = Vector2(571, 176)
 
+[node name="SpawnTimer" type="Timer" parent="."]
+
 [connection signal="kill" from="Enemy" to="." method="_on_player_killed"]
 [connection signal="kill" from="GoldEnemy" to="." method="_on_player_killed"]
 [connection signal="collect" from="prize" to="." method="_on_prize_collect"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

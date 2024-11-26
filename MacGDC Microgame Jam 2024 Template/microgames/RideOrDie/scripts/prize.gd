@@ -12,8 +12,9 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body.is_in_group("Player"):
 		collect.emit()
+		Globals.coin_collected = true;
 		
 		# Play animation
 		

@@ -32,6 +32,11 @@ window/bg_color=Color(0.14, 0.14, 0.14, 1)
 
 import/blender/enabled=false
 
+[global_group]
+
+Player=""
+Enemies=""
+
 [input]
 
 keyboard_up={

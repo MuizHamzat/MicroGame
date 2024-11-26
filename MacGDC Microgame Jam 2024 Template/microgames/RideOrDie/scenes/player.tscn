@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dowau"]
 radius = 40.0125
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(134, 199)
 motion_mode = 1
 script = ExtResource("1_olcur")

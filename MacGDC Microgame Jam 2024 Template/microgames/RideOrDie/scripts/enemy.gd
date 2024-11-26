@@ -6,7 +6,7 @@ var speed = 150
 signal kill
 
 func _physics_process(delta):
-	if Globals.target_alive:
+	if Globals.target_alive and not Globals.coin_collected:
 		var direction = (target.position-position).normalized()
 		velocity = direction * speed
 		look_at(target.position) #This makes the enemy actually face the player
@@ -20,7 +20,7 @@ func _physics_process(delta):
 
 
 func _on_kill_zone_body_entered(body):
-	if body.name == "Player":
+	if body.is_in_group("Player"):
 		Globals.target_alive = false
 		body.death()
 		kill.emit()
