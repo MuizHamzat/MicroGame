@@ -21,5 +21,3 @@ position = Vector2(70, 351)
 
 [node name="prize" parent="." instance=ExtResource("5_5j4p5")]
 position = Vector2(571, 176)
-
-[connection signal="kill" from="Enemy" to="." method="_on_player_killed"]

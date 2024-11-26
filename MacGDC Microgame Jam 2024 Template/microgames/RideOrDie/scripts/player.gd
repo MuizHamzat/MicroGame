@@ -28,3 +28,7 @@ func _physics_process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_slide()
+
+func kill():
+	print("Player killed")
+	queue_free()
