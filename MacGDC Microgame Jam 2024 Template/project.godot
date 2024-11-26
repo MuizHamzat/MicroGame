@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.133333, 0.12549, 0.203922, 1)
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://microgames/RideOrDie/scripts/globals.gd"
+
 [display]
 
 window/size/viewport_width=640
