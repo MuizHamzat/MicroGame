@@ -1,9 +1,13 @@
 extends Area2D
 signal collect
 
+@onready var gold_enemy = $"../GoldEnemy"
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# Makes the coin stick to the enemy
+	if ():
+		position = gold_enemy.position
 
 
 func _on_body_entered(body):

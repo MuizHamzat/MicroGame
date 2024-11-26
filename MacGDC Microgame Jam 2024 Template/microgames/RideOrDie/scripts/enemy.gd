@@ -28,3 +28,4 @@ func _on_kill_zone_body_entered(body: Node2D) -> void:
 	
 	# Must be deferred as we can't change physics properties on a physics callback.
 	#$"../Player".set_deferred("disabled", true)
+	
