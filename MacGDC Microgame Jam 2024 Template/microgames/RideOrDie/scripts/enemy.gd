@@ -22,7 +22,7 @@ func _physics_process(delta):
 func _on_kill_zone_body_entered(body):
 	if body.name == "Player":
 		Globals.target_alive = false
-		body.kill()
+		body.death()
 		kill.emit()
 	
 	# Must be deferred as we can't change physics properties on a physics callback.

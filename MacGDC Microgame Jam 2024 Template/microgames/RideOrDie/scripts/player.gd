@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+@onready var hitbox = $hitbox
+@onready var attack = $Attack
+
 var screen_size
 const SPEED = 300.0
+var can_attack = true
 
 
 func _ready():
@@ -18,6 +22,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("keyboard_right"):
 		velocity.x += 1;
 		
+	# Attack
+	if Input.is_action_pressed("keyboard_action") and can_attack:
+		#play here animation
+		can_attack = false
+		attack.start()
+	
 	# Normalizing the speed so diagonal isnt faster (can add animation after :))
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
@@ -29,6 +39,20 @@ func _physics_process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_slide()
 
-func kill():
+func death():
 	print("Player killed")
 	queue_free()
+
+
+func kill(object):
+	print("Enemy has been slayed")
+	object.queue_free()
+
+
+func _on_attack_timeout():
+	can_attack = true
+
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("Enemies"):
+		kill(body)
