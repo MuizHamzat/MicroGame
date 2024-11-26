@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xs30e7u5ifhw"]
+[gd_scene load_steps=5 format=3 uid="uid://xs30e7u5ifhw"]
 
 [ext_resource type="PackedScene" uid="uid://ddhoio73023ba" path="res://scenes/main/bomb_timer/bomb_timer.tscn" id="1_4h2vg"]
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/main.gd" id="1_lidmc"]
 [ext_resource type="PackedScene" uid="uid://bv7qqj1ij8umf" path="res://microgames/RideOrDie/scenes/player.tscn" id="3_o8gma"]
-[ext_resource type="PackedScene" uid="uid://d4k1fqeu8ndjf" path="res://microgames/RideOrDie/scenes/enemy.tscn" id="4_6ujcx"]
 [ext_resource type="PackedScene" uid="uid://cyak52qexjrux" path="res://microgames/RideOrDie/scenes/prize.tscn" id="5_5j4p5"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("bomb_timer")]
@@ -17,17 +16,11 @@ position = Vector2(70, 351)
 
 [node name="Player" parent="." instance=ExtResource("3_o8gma")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_6ujcx")]
-
-[node name="GoldEnemy" parent="." instance=ExtResource("4_6ujcx")]
-position = Vector2(571, 177)
-
 [node name="prize" parent="." instance=ExtResource("5_5j4p5")]
 position = Vector2(571, 176)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[connection signal="kill" from="Enemy" to="." method="_on_player_killed"]
-[connection signal="kill" from="GoldEnemy" to="." method="_on_player_killed"]
+[connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="collect" from="prize" to="." method="_on_prize_collect"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

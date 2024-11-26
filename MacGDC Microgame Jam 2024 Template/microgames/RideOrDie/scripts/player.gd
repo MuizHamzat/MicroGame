@@ -7,6 +7,7 @@ extends CharacterBody2D
 var screen_size
 const SPEED = 300.0
 
+signal player_death
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -44,6 +45,7 @@ func _physics_process(delta):
 
 func death():
 	print("Player killed")
+	player_death.emit()
 	queue_free()
 
 

@@ -1,7 +1,7 @@
 extends Area2D
 signal collect
 
-@onready var gold_enemy = $"../GoldEnemy"
+#@onready var gold_enemy = $"../GoldEnemy"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
