@@ -37,9 +37,11 @@ func _on_player_player_death():
 func _on_spawn_timer_timeout() -> void:
 	if not game_over:
 		#Set a random position for the spawned enemy
-		var edge = randi() % 4
+		#Pick an edge of the screen for the enemy to spawn
+		var edge = randi() % 4 #0=Bottom, 1=Right, 2=Top, 3=Left
 		var spawn_position = Vector2()
 		
+		#Set the spawn position based off the value of edge
 		match edge:
 			0:	#Bottom
 				spawn_position = Vector2(randf()*screen_size.x, screen_size.y+spawn_distance)
