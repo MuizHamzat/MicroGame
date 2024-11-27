@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bv7qqj1ij8umf"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/player.gd" id="1_olcur"]
-[ext_resource type="Texture2D" uid="uid://b2fqfgrggdbdq" path="res://microgames/RideOrDie/textures/circle.png" id="2_5fdlo"]
+[ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_5fdlo"]
 [ext_resource type="Texture2D" uid="uid://ltkt73u65elj" path="res://microgames/RideOrDie/sprites/Player.png" id="2_oish5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didm8"]

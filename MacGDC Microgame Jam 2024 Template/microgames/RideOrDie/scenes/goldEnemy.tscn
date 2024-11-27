@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4m8bvukgwjm0"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/gold_enemy.gd" id="1_2y6kw"]
-[ext_resource type="Texture2D" uid="uid://b0pw57pjdth8p" path="res://microgames/RideOrDie/sprites/Prize.png" id="2_5f8t8"]
-[ext_resource type="Texture2D" uid="uid://b2fqfgrggdbdq" path="res://microgames/RideOrDie/textures/circle.png" id="2_6xukb"]
+[ext_resource type="Texture2D" uid="uid://ba3y147seejv8" path="res://microgames/RideOrDie/sprites/Prize.png" id="2_5f8t8"]
+[ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_6xukb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 animations = [{
