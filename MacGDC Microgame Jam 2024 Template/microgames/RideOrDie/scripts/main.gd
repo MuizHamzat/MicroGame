@@ -1,5 +1,6 @@
 extends Microgame
 
+@onready var gameTimer = $GameTimer
 @onready var spawnTimer = $SpawnTimer
 @onready var player = $Player
 
@@ -17,6 +18,7 @@ signal game_over_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	gameTimer.start()
 	spawnTimer.start()
 
 
@@ -38,6 +40,7 @@ func _on_player_player_death():
 
 
 func _on_spawn_timer_timeout() -> void:
+	print(gameTimer.get_time_left())
 	if not game_over:
 		#Set a random position for the spawned enemy
 		#Pick an edge of the screen for the enemy to spawn
@@ -54,6 +57,8 @@ func _on_spawn_timer_timeout() -> void:
 				spawn_position = Vector2(randf()*screen_size.x, -spawn_distance)
 			3:	#Left
 				spawn_position = Vector2(-spawn_distance, randf()*screen_size.y)
+		
+		var gold_chance
 		
 		#Create an instance of the enemy scene
 		var enemy_instance = enemy_scene.instantiate()
