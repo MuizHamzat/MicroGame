@@ -38,7 +38,9 @@ enum ControlType {
 
 # SIGNALS
 signal finish_game
+@warning_ignore("unused_signal")
 signal win_game
+@warning_ignore("unused_signal")
 signal lose_game
 
 # METHODS

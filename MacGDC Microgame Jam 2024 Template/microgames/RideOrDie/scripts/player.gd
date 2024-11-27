@@ -67,6 +67,7 @@ func kill(object):
 
 
 # This sets the hitbox to face up down left or right
+@warning_ignore("shadowed_variable")
 func setAttackDirection(last_direction: String) -> void:
 	match last_direction:
 		"up":
@@ -89,3 +90,7 @@ func _on_hitbox_body_entered(body):
 
 func _on_attack_duration_timeout():
 	hitbox.set_deferred("disabled", true)
+
+
+func _on_attack_cooldown_timeout() -> void:
+	pass

@@ -22,6 +22,7 @@ const flare_offset = Vector2(10, -8)
 var sfx_tick_flag = true
 var tick_count = -1
 
+@warning_ignore("unused_signal")
 signal exploded
 
 func activate(secs: int):

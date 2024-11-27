@@ -4,12 +4,12 @@ class_name Enemy
 
 @onready var target
 
-var speed = 150
+@export var speed = 100
 var game_over = false
 
 signal kill
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not game_over:
 		var direction = (target.position-position).normalized()
 		velocity = direction * speed
