@@ -9,29 +9,33 @@
 script = ExtResource("1_lidmc")
 game_length = 10
 control_type = 1
-bomb_timer = NodePath("BombTimer")
+bomb_timer = NodePath("CanvasLayer/BombTimer")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.95
+blend_mode = 1
 
 [node name="Floor" type="Sprite2D" parent="."]
 position = Vector2(318, 181)
 texture = ExtResource("3_icesu")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
-blend_mode = 1
-
 [node name="Player" parent="." instance=ExtResource("3_o8gma")]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 
-[node name="BombTimer" parent="." instance=ExtResource("1_4h2vg")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BombTimer" parent="CanvasLayer" instance=ExtResource("1_4h2vg")]
+light_mask = 0
 position = Vector2(70, 351)
 
 [connection signal="game_over_signal" from="." to="." method="_on_game_over_signal"]
+[connection signal="enemy_killed" from="Player" to="." method="_on_player_enemy_killed"]
 [connection signal="gold_killed" from="Player" to="." method="_on_player_gold_killed"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

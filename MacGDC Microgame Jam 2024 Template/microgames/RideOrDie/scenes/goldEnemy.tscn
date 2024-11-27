@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4m8bvukgwjm0"]
+[gd_scene load_steps=7 format=3 uid="uid://b4m8bvukgwjm0"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/gold_enemy.gd" id="1_2y6kw"]
 [ext_resource type="Texture2D" uid="uid://b0pw57pjdth8p" path="res://microgames/RideOrDie/sprites/Prize.png" id="2_5f8t8"]
+[ext_resource type="Texture2D" uid="uid://b2fqfgrggdbdq" path="res://microgames/RideOrDie/textures/circle.png" id="2_6xukb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 animations = [{
@@ -24,6 +25,12 @@ position = Vector2(290, 158)
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("1_2y6kw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.74902, 0.717647, 0, 1)
+energy = 3.0
+texture = ExtResource("2_6xukb")
+texture_scale = 0.2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e75uo")

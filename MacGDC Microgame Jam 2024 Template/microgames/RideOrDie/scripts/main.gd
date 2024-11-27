@@ -9,12 +9,14 @@ var gold_enemy_scene: PackedScene = preload("res://microgames/RideOrDie/scenes/g
 
 var game_over = false
 var gold_spawned = false
-@export var min_gold_chance = 0.01
+@export var min_gold_chance = 0
 @export var max_gold_chance = 1
 @export var gold_spawn_start = 7.0
 @export var gold_spawn_guaranteed = 3.0
 var screen_size = Vector2(640,360)
 var spawn_distance = 50
+var enemy_count = 0
+var enemy_spawn_cap = 30
 
 
 signal game_over_signal
@@ -45,7 +47,7 @@ func _on_player_player_death():
 
 
 func _on_spawn_timer_timeout():
-	if not game_over:
+	if not game_over and enemy_count < enemy_spawn_cap:
 		#Set a random position for the spawned enemy
 		#Pick an edge of the screen for the enemy to spawn
 		var edge = randi() % 4 #0=Bottom, 1=Right, 2=Top, 3=Left
@@ -94,9 +96,14 @@ func _on_spawn_timer_timeout():
 		#This will allow the enemy to know of the existence of the player instance
 		
 		enemy_instance.global_position = spawn_position
+		enemy_count += 1
 
 
 func _on_game_over_signal() -> void:
 	player.game_over = true
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		enemy.game_over = true
+
+
+func _on_player_enemy_killed() -> void:
+	enemy_count -= 1

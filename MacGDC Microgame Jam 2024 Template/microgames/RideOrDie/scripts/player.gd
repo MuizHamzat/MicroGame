@@ -6,11 +6,13 @@ extends CharacterBody2D
 @onready var attackDuration = $AttackDuration
 
 var screen_size
+var player_border = Vector2(30,30)
 const SPEED = 300.0
 var game_over = false
 var last_direction = "up"
 
 signal player_death
+signal enemy_killed
 signal gold_killed
 
 func _ready():
@@ -53,13 +55,14 @@ func _physics_process(delta):
 			#$AnimatedSprite2D.stop()
 	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position = position.clamp(Vector2.ZERO + player_border, screen_size - player_border)
 	move_and_slide()
 
 func death():
 	#Emit death signal to let other nodes know player is dead (namely enemies)
-	player_death.emit()
-	queue_free()
+	#player_death.emit()
+	#queue_free()
+	pass
 
 
 func kill(object):
@@ -82,6 +85,7 @@ func setAttackDirection(last_direction: String) -> void:
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
+		enemy_killed.emit()
 		if body.is_in_group("Gold Enemy"):
 			print("Gold enemy hit")
 			gold_killed.emit()
