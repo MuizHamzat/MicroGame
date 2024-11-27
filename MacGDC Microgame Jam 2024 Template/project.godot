@@ -32,6 +32,7 @@ import/blender/enabled=false
 
 Player=""
 Enemies=""
+"Gold Enemy"=""
 
 [input]
 

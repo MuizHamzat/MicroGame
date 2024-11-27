@@ -11,6 +11,7 @@ var game_over = false
 var last_direction = "up"
 
 signal player_death
+signal gold_killed
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -80,6 +81,9 @@ func setAttackDirection(last_direction: String) -> void:
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
+		if body.is_in_group("Gold Enemy"):
+			print("Gold enemy hit")
+			gold_killed.emit()
 		kill(body)
 
 

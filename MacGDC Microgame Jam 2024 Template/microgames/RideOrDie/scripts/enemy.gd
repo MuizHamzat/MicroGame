@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 @onready var target
 
 var speed = 150

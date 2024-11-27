@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4k1fqeu8ndjf"]
+[gd_scene load_steps=6 format=3 uid="uid://b4m8bvukgwjm0"]
 
-[ext_resource type="Script" path="res://microgames/RideOrDie/scripts/enemy.gd" id="1_sko4m"]
-[ext_resource type="Texture2D" uid="uid://nfvoqq62ijtg" path="res://microgames/RideOrDie/sprites/Enemy.png" id="2_xem14"]
+[ext_resource type="Script" path="res://microgames/RideOrDie/scripts/gold_enemy.gd" id="1_2y6kw"]
+[ext_resource type="Texture2D" uid="uid://ba3y147seejv8" path="res://microgames/RideOrDie/sprites/Prize.png" id="2_5f8t8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xem14")
+"texture": ExtResource("2_5f8t8")
 }],
 "loop": true,
 "name": &"default",
@@ -19,10 +19,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhhmj"]
 radius = 24.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+[node name="GoldEnemy" type="CharacterBody2D" groups=["Enemies", "Gold Enemy"]]
 position = Vector2(290, 158)
 motion_mode = 1
-script = ExtResource("1_sko4m")
+script = ExtResource("1_2y6kw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e75uo")
