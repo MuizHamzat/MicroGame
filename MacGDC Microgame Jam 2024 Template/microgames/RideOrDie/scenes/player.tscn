@@ -17,11 +17,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dowau"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k1j8i"]
 radius = 40.0125
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(134, 199)
+position = Vector2(136, 192)
 motion_mode = 1
 script = ExtResource("1_olcur")
 
@@ -34,7 +34,11 @@ sprite_frames = SubResource("SpriteFrames_hmefm")
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource("CircleShape2D_dowau")
+visible = false
+shape = SubResource("CircleShape2D_k1j8i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hitbox"]
+polygon = PackedVector2Array(0, 0, -24, -24, -16, -32, -8, -36, 0, -38, 8, -36, 16, -32, 24, -24)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
