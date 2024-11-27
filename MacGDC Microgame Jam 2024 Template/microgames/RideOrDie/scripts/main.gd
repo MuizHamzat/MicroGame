@@ -50,18 +50,18 @@ func _on_spawn_timer_timeout():
 	if not game_over and enemy_count < enemy_spawn_cap:
 		#Set a random position for the spawned enemy
 		#Pick an edge of the screen for the enemy to spawn
-		var edge = randi() % 4 #0=Bottom, 1=Right, 2=Top, 3=Left
+		var edge = randi() % 2 #0=Bottom, 1=Right, 2=Top, 3=Left
 		var spawn_position = Vector2()
 		
 		#Set the spawn position based off the value of edge
 		match edge:
-			0:	#Bottom
-				spawn_position = Vector2(randf()*screen_size.x, screen_size.y+spawn_distance)
-			1:	#Right
+			#0:	#Bottom
+				#spawn_position = Vector2(randf()*screen_size.x, screen_size.y+spawn_distance)
+			0:	#Right
 				spawn_position = Vector2(screen_size.x+spawn_distance, randf()*screen_size.y)
-			2: 	#Top
-				spawn_position = Vector2(randf()*screen_size.x, -spawn_distance)
-			3:	#Left
+			#2: 	#Top
+				#spawn_position = Vector2(randf()*screen_size.x, -spawn_distance)
+			1:	#Left
 				spawn_position = Vector2(-spawn_distance, randf()*screen_size.y)
 
 		#Create chance to spawn gold enemy

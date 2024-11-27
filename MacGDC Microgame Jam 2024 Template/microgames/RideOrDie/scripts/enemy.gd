@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Enemy
 
+@onready var sprite = $AnimatedSprite2D
+
 @onready var target
 
 @export var speed = 100
@@ -13,7 +15,10 @@ func _physics_process(_delta):
 	if not game_over:
 		var direction = (target.position-position).normalized()
 		velocity = direction * speed
-		look_at(target.position) #This makes the enemy actually face the player
+		if target.position.x < position.x:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 	else:
 		velocity = Vector2.ZERO
 	
