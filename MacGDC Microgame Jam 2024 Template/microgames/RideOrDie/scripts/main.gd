@@ -5,9 +5,12 @@ extends Microgame
 
 var enemy_scene: PackedScene = preload("res://microgames/RideOrDie/scenes/enemy.tscn")
 
+var enemy_count = 0
+var game_over = false
+var max_enemies = 10
 var screen_size = Vector2(640,360)
 var spawn_distance = 50
-var game_over = false
+
 
 signal game_over_signal
 
@@ -61,6 +64,7 @@ func _on_spawn_timer_timeout() -> void:
 		#This will allow the enemy to know of the existence of the player instance
 		
 		enemy_instance.global_position = spawn_position
+		enemy_count += 1
 
 
 func _on_game_over_signal() -> void:
