@@ -55,7 +55,7 @@ func _physics_process(delta):
 			#$AnimatedSprite2D.stop()
 	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO + player_border, screen_size - player_border)
+	position = position.clamp(Vector2(0,160) + player_border, screen_size - player_border)
 	move_and_slide()
 
 func death():
