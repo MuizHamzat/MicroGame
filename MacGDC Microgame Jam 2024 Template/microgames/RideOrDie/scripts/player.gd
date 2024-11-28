@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var hitbox = $hitbox/CollisionPolygon2D
+@onready var hitbox = $hitbox/CollisionShape2D #$hitbox/CollisionPolygon2D
 #@onready var invincible_mode = $hitbox/CollisionShape2D
 @onready var attackCooldown = $AttackCooldown
 @onready var attackDuration = $AttackDuration
@@ -23,19 +23,23 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
-	setAttackDirection(last_direction)
+	#setAttackDirection(last_direction)
 	if not game_over:
 		if Input.is_action_pressed("keyboard_down"):
 			velocity.y += 1;
+			rotation_degrees = 180
 			last_direction = "down"
 		if Input.is_action_pressed("keyboard_up"):
 			velocity.y -= 1;
+			rotation_degrees = 0
 			last_direction = "up"
 		if Input.is_action_pressed("keyboard_left"):
 			velocity.x -= 1;
+			rotation_degrees = -90
 			last_direction = "left"
 		if Input.is_action_pressed("keyboard_right"):
 			velocity.x += 1;
+			rotation_degrees = 90
 			last_direction = "right"
 
 

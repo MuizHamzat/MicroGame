@@ -19,6 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbv0o"]
+size = Vector2(32, 50)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(136, 192)
@@ -38,12 +39,8 @@ sprite_frames = SubResource("SpriteFrames_hmefm")
 
 [node name="hitbox" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hitbox"]
-scale = Vector2(2, 2)
-polygon = PackedVector2Array(0, 0, -27, -21, -22, -27, -16, -32, -8, -36, 0, -38, 8, -36, 16, -32, 23, -27, 27, -21)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-visible = false
+position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_mbv0o")
 
 [node name="AttackCooldown" type="Timer" parent="."]
