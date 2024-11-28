@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://xs30e7u5ifhw"]
+[gd_scene load_steps=7 format=3 uid="uid://xs30e7u5ifhw"]
 
 [ext_resource type="PackedScene" uid="uid://ddhoio73023ba" path="res://scenes/main/bomb_timer/bomb_timer.tscn" id="1_4h2vg"]
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/main.gd" id="1_lidmc"]
 [ext_resource type="Texture2D" uid="uid://1ar8sm1y221h" path="res://microgames/RideOrDie/sprites/bg.png" id="2_3q2sg"]
 [ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_hl6k2"]
+[ext_resource type="AudioStream" uid="uid://db0hi46mtuaf2" path="res://microgames/RideOrDie/audio/scary.wav" id="2_nudk5"]
 [ext_resource type="PackedScene" uid="uid://bv7qqj1ij8umf" path="res://microgames/RideOrDie/scenes/player.tscn" id="3_o8gma"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("bomb_timer")]
@@ -11,6 +12,9 @@ script = ExtResource("1_lidmc")
 game_length = 10
 control_type = 1
 bomb_timer = NodePath("CanvasLayer/BombTimer")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nudk5")
 
 [node name="SkyLight" type="PointLight2D" parent="."]
 visible = false

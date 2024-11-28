@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var attackSprite = $hitbox/AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
 
+@onready var death_sfx = $AudioStreamPlayer2D
+
 
 var screen_size
 var player_border = Vector2(30,20)
@@ -76,9 +78,9 @@ func _physics_process(delta):
 
 func death():
 	#Emit death signal to let other nodes know player is dead (namely enemies)
+	death_sfx.play()
 	player_death.emit()
-	queue_free()
-	pass
+	#queue_free()
 
 
 func kill(object):

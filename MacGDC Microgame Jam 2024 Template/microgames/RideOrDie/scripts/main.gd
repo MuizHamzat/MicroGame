@@ -3,6 +3,8 @@ extends Microgame
 @onready var gameTimer = $GameTimer
 @onready var spawnTimer = $SpawnTimer
 @onready var player = $Player
+@onready var bg_music = $AudioStreamPlayer2D
+#@export var explosion : PackedScene
 
 var enemy_scene: PackedScene = preload("res://microgames/RideOrDie/scenes/enemy.tscn")
 var gold_enemy_scene: PackedScene = preload("res://microgames/RideOrDie/scenes/goldEnemy.tscn")
@@ -24,10 +26,14 @@ signal game_over_signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	bg_music.play()
 	gameTimer.start()
 	spawnTimer.start()
 
-
+#func create_explosion_at(thing : Node2D):
+	#var inst = explosion.instantiate() as Sprite2D
+	#add_child(inst)
+	#inst.position = thing.position
 
 func _on_player_gold_killed() -> void:
 	win_game.emit()
@@ -42,6 +48,8 @@ func _on_player_player_death():
 	lose_game.emit()
 	game_over = true
 	game_over_signal.emit()
+	#create_explosion_at(player)
+	player.queue_free()
 	#await get_tree().create_timer(2).timeout
 	#finish_game.emit()
 

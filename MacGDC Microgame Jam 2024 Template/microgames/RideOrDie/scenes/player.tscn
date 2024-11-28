@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv7qqj1ij8umf"]
+[gd_scene load_steps=17 format=3 uid="uid://bv7qqj1ij8umf"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/player.gd" id="1_olcur"]
 [ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_5fdlo"]
+[ext_resource type="AudioStream" uid="uid://kwws35sxrp5o" path="res://microgames/RideOrDie/audio/Player-death-1.wav" id="2_knydc"]
 [ext_resource type="Texture2D" uid="uid://ua5h4cpaejo" path="res://microgames/RideOrDie/sprites/Knight.png" id="3_qssxv"]
-[ext_resource type="Texture2D" uid="uid://clq84upydkiot" path="res://microgames/RideOrDie/sprites/lance_attack-sheet.png" id="4_d4nxo"]
+[ext_resource type="Texture2D" uid="uid://e5muew52pfxk" path="res://microgames/RideOrDie/sprites/lance_attack.png" id="4_6fqpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didm8"]
 size = Vector2(30, 30)
@@ -71,25 +72,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbv0o"]
 size = Vector2(32, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdva5"]
-atlas = ExtResource("4_d4nxo")
-region = Rect2(32, 0, 32, 50)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_s73pk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kdva5")
+"texture": ExtResource("4_6fqpj")
 }],
 "loop": true,
 "name": &"attack",
 "speed": 4.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3a0mk"]
+polygon = PackedVector2Array(0, 17, 0, 19, -4, 19, -4, 17, -6, 17, -6, 15, -8, 15, -8, 13, -10, 13, -10, 11, -14, 11, -14, 5, -12, 5, -12, 3, -10, 3, -10, -3, -12, -3, -12, -5, -14, -5, -14, -7, -16, -7, -16, -11, -14, -11, -14, -15, -12, -15, -12, -17, -8, -17, -8, -19, -2, -19, -2, -17, 0, -17, 0, -15, 2, -15, 2, -11, 8, -11, 8, -9, 10, -9, 10, -7, 12, -7, 12, 3, 14, 3, 14, 5, 16, 5, 16, 9, 14, 9, 14, 11, 12, 11, 12, 13, 10, 13, 10, 15, 8, 15, 8, 17, 6, 17, 6, 19, 2, 19, 2, 17)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(136, 192)
 motion_mode = 1
 script = ExtResource("1_olcur")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_knydc")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 1.5
@@ -118,12 +121,15 @@ sprite_frames = SubResource("SpriteFrames_s73pk")
 animation = &"attack"
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.4
 one_shot = true
 
 [node name="AttackDuration" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_3a0mk")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

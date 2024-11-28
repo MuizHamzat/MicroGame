@@ -43,7 +43,7 @@ metadata/_edit_vertical_guides_ = [274.0, 307.0]
 color = Color(0.117647, 0.741176, 0.713726, 1)
 energy = 2.0
 texture = ExtResource("2_7eagn")
-texture_scale = 0.05
+texture_scale = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6xhav")
