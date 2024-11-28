@@ -15,6 +15,7 @@ var screen_size
 var player_border = Vector2(30,20)
 const SPEED = 300.0
 var game_over = false
+var is_moving = false
 var last_direction = "right"
 
 signal player_death
@@ -29,6 +30,17 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
+	
+	match last_direction:
+		"up":
+			sprite.animation = "idle_up"
+		"right":
+			sprite.animation = "idle_side"
+		"down":
+			sprite.animation = "idle_down"
+		"left":
+			sprite.animation = "idle_side"
+			
 	#setAttackDirection(last_direction)
 	if not game_over:
 		if Input.is_action_pressed("keyboard_down"):
@@ -46,13 +58,14 @@ func _physics_process(delta):
 			$hitbox.rotation_degrees = -90
 			last_direction = "left"
 			sprite.flip_h = true
-			sprite.animation = "idle_side"
+			sprite.animation = "walk_side"
 		if Input.is_action_pressed("keyboard_right"):
 			velocity.x += 1;
 			$hitbox.rotation_degrees = 90
 			last_direction = "right"
 			sprite.flip_h = false
-			sprite.animation = "idle_side"
+			sprite.animation = "walk_side"
+		
 			
 
 
