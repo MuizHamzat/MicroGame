@@ -1,11 +1,11 @@
 [gd_scene load_steps=26 format=3 uid="uid://bv7qqj1ij8umf"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/player.gd" id="1_olcur"]
-[ext_resource type="Texture2D" uid="uid://wjixyf10byge" path="res://microgames/RideOrDie/textures/circle.png" id="2_5fdlo"]
+[ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_5fdlo"]
 [ext_resource type="AudioStream" uid="uid://kwws35sxrp5o" path="res://microgames/RideOrDie/audio/Player-death-1.wav" id="2_knydc"]
-[ext_resource type="Texture2D" uid="uid://dmi2jycpoc2m" path="res://microgames/RideOrDie/sprites/Knight.png" id="3_qssxv"]
-[ext_resource type="Texture2D" uid="uid://b6spi2kfubf8b" path="res://microgames/RideOrDie/sprites/lance_attack.png" id="4_6fqpj"]
-[ext_resource type="Texture2D" uid="uid://c8wd0g4uth2h7" path="res://microgames/RideOrDie/sprites/knight_walk.png" id="5_l5crq"]
+[ext_resource type="Texture2D" uid="uid://ua5h4cpaejo" path="res://microgames/RideOrDie/sprites/Knight.png" id="3_qssxv"]
+[ext_resource type="Texture2D" uid="uid://e5muew52pfxk" path="res://microgames/RideOrDie/sprites/lance_attack.png" id="4_6fqpj"]
+[ext_resource type="Texture2D" uid="uid://c8xrp3o5sjgb1" path="res://microgames/RideOrDie/sprites/knight_walk.png" id="5_l5crq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_didm8"]
 size = Vector2(30, 30)
