@@ -4,13 +4,16 @@ extends CharacterBody2D
 #@onready var invincible_mode = $hitbox/CollisionShape2D
 @onready var attackCooldown = $AttackCooldown
 @onready var attackDuration = $AttackDuration
+
 @onready var attackSprite = $hitbox/AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D
+
 
 var screen_size
 var player_border = Vector2(30,20)
 const SPEED = 300.0
 var game_over = false
-var last_direction = "up"
+var last_direction = "right"
 
 signal player_death
 signal enemy_killed
@@ -30,18 +33,25 @@ func _physics_process(delta):
 			velocity.y += 1;
 			rotation_degrees = 180
 			last_direction = "down"
+			sprite.animation = "idle_down"
 		if Input.is_action_pressed("keyboard_up"):
 			velocity.y -= 1;
 			rotation_degrees = 0
 			last_direction = "up"
+			sprite.animation = "idle_up"
 		if Input.is_action_pressed("keyboard_left"):
 			velocity.x -= 1;
 			rotation_degrees = -90
 			last_direction = "left"
+			sprite.flip_h = true
+			sprite.animation = "idle_side"
 		if Input.is_action_pressed("keyboard_right"):
 			velocity.x += 1;
 			rotation_degrees = 90
 			last_direction = "right"
+			sprite.flip_h = false
+			sprite.animation = "idle_side"
+			
 
 
 		# Attack
