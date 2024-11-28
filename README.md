@@ -1,4 +1,4 @@
-# MicroGame 
+# Ghost Slayer - MacGDC Microgame Jam Entry
 
 A small game made (using the Godot game engine) by me and Aidan Heathfield as an entry in the mcMaster GDC Microgame Jam.
 
