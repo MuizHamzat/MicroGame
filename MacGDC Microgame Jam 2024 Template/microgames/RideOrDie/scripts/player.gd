@@ -4,6 +4,7 @@ extends CharacterBody2D
 #@onready var invincible_mode = $hitbox/CollisionShape2D
 @onready var attackCooldown = $AttackCooldown
 @onready var attackDuration = $AttackDuration
+@onready var attackSprite = $hitbox/AnimatedSprite2D
 
 var screen_size
 var player_border = Vector2(30,20)
@@ -18,7 +19,7 @@ signal gold_killed
 func _ready():
 	screen_size = get_viewport_rect().size
 	hitbox.disabled = true
-	#invincible_mode.disabled = true
+	attackSprite.visible = false
 	
 
 func _physics_process(delta):
@@ -46,6 +47,7 @@ func _physics_process(delta):
 		# Attack
 		if Input.is_action_pressed("keyboard_action") and attackCooldown.is_stopped():
 			#play here animation
+			attackSprite.visible = true
 			hitbox.disabled = false
 			#Start cooldown and duration timer
 			attackCooldown.start()
@@ -100,6 +102,7 @@ func _on_hitbox_body_entered(body):
 
 func _on_attack_duration_timeout():
 	hitbox.set_deferred("disabled", true)
+	attackSprite.visible = false
 
 
 func _on_attack_cooldown_timeout() -> void:
