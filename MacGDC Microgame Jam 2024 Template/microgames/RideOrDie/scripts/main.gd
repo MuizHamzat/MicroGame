@@ -3,7 +3,10 @@ extends Microgame
 @onready var gameTimer = $GameTimer
 @onready var spawnTimer = $SpawnTimer
 @onready var player = $Player
-@onready var bg_music = $AudioStreamPlayer2D
+@onready var bg_music = $bg_music
+@onready var lose_audio = $Lose
+@onready var win_audio = $Win
+@onready var player_death_sfx = $PlayerDeath
 #@export var explosion : PackedScene
 
 var enemy_scene: PackedScene = preload("res://microgames/RideOrDie/scenes/enemy.tscn")
@@ -38,6 +41,7 @@ func _ready() -> void:
 func _on_player_gold_killed() -> void:
 	win_game.emit()
 	game_over = true
+	win_audio.play()
 	game_over_signal.emit()
 	# Play message
 	#await get_tree().create_timer(2).timeout
@@ -45,9 +49,11 @@ func _on_player_gold_killed() -> void:
 
 
 func _on_player_player_death():
+	
 	lose_game.emit()
 	game_over = true
 	game_over_signal.emit()
+	lose_audio.play()
 	#create_explosion_at(player)
 	player.queue_free()
 	#await get_tree().create_timer(2).timeout
