@@ -12,11 +12,11 @@ var gold_spawned = false
 @export var min_gold_chance = 0
 @export var max_gold_chance = 1
 @export var gold_spawn_start = 7.0
-@export var gold_spawn_guaranteed = 3.0
+@export var gold_spawn_guaranteed = 6.0
 var screen_size = Vector2(640,360)
 var spawn_distance = 50
 var enemy_count = 0
-var enemy_spawn_cap = 30
+var enemy_spawn_cap = 10
 
 
 signal game_over_signal
@@ -34,16 +34,16 @@ func _on_player_gold_killed() -> void:
 	game_over = true
 	game_over_signal.emit()
 	# Play message
-	await get_tree().create_timer(2).timeout
-	finish_game.emit()
+	#await get_tree().create_timer(2).timeout
+	#finish_game.emit()
 
 
 func _on_player_player_death():
 	lose_game.emit()
 	game_over = true
 	game_over_signal.emit()
-	await get_tree().create_timer(2).timeout
-	finish_game.emit()
+	#await get_tree().create_timer(2).timeout
+	#finish_game.emit()
 
 
 func _on_spawn_timer_timeout():

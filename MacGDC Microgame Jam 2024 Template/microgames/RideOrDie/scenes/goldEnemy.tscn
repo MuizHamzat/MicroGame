@@ -1,39 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4m8bvukgwjm0"]
+[gd_scene load_steps=9 format=3 uid="uid://b4m8bvukgwjm0"]
 
 [ext_resource type="Script" path="res://microgames/RideOrDie/scripts/gold_enemy.gd" id="1_2y6kw"]
-[ext_resource type="Texture2D" uid="uid://ba3y147seejv8" path="res://microgames/RideOrDie/sprites/Prize.png" id="2_5f8t8"]
 [ext_resource type="Texture2D" uid="uid://bv0qgr8vh2sx7" path="res://microgames/RideOrDie/textures/circle.png" id="2_6xukb"]
+[ext_resource type="Texture2D" uid="uid://4kw5hw1pmud5" path="res://microgames/RideOrDie/sprites/gold_ghost.png" id="3_6kf1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sgcp"]
+atlas = ExtResource("3_6kf1g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqig0"]
+atlas = ExtResource("3_6kf1g")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e75uo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5f8t8")
+"texture": SubResource("AtlasTexture_6sgcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqig0")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xhav"]
+size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhhmj"]
-radius = 24.0
+radius = 11.5
 
 [node name="GoldEnemy" type="CharacterBody2D" groups=["Enemies", "Gold Enemy"]]
 position = Vector2(290, 158)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_2y6kw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.74902, 0.717647, 0, 1)
-energy = 3.0
+energy = 2.0
 texture = ExtResource("2_6xukb")
-texture_scale = 0.2
+texture_scale = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e75uo")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6xhav")

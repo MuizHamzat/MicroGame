@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 @onready var hitbox = $hitbox/CollisionPolygon2D
-@onready var invincible_mode = $hitbox/CollisionShape2D
+#@onready var invincible_mode = $hitbox/CollisionShape2D
 @onready var attackCooldown = $AttackCooldown
 @onready var attackDuration = $AttackDuration
 
 var screen_size
-var player_border = Vector2(30,30)
+var player_border = Vector2(30,20)
 const SPEED = 300.0
 var game_over = false
 var last_direction = "up"
@@ -18,7 +18,7 @@ signal gold_killed
 func _ready():
 	screen_size = get_viewport_rect().size
 	hitbox.disabled = true
-	invincible_mode.disabled = true
+	#invincible_mode.disabled = true
 	
 
 func _physics_process(delta):
@@ -60,8 +60,8 @@ func _physics_process(delta):
 
 func death():
 	#Emit death signal to let other nodes know player is dead (namely enemies)
-	#player_death.emit()
-	#queue_free()
+	player_death.emit()
+	queue_free()
 	pass
 
 
@@ -86,9 +86,11 @@ func setAttackDirection(last_direction: String) -> void:
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
 		enemy_killed.emit()
-		if body.is_in_group("Gold Enemy"):
-			print("Gold enemy hit")
-			gold_killed.emit()
+		kill(body)
+	
+	if body.is_in_group("Gold Enemy"):
+		print("Gold enemy hit")
+		gold_killed.emit()
 		kill(body)
 
 

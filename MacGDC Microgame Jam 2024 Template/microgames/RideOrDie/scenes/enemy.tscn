@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dke7m10rtcn2g" path="res://microgames/RideOrDie/sprites/ghost-sheet.png" id="3_ielfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xhav"]
-size = Vector2(15, 16)
+size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhhmj"]
-radius = 12.0416
+radius = 11.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_so6o4"]
 atlas = ExtResource("3_ielfu")
@@ -34,6 +34,7 @@ animations = [{
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(290, 158)
+scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_sko4m")
 metadata/_edit_vertical_guides_ = [274.0, 307.0]
@@ -45,7 +46,6 @@ texture = ExtResource("2_7eagn")
 texture_scale = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_6xhav")
 
 [node name="KillZone" type="Area2D" parent="."]
