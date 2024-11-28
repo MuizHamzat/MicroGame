@@ -31,23 +31,23 @@ func _physics_process(delta):
 	if not game_over:
 		if Input.is_action_pressed("keyboard_down"):
 			velocity.y += 1;
-			rotation_degrees = 180
+			$hitbox.rotation_degrees = 180
 			last_direction = "down"
 			sprite.animation = "idle_down"
 		if Input.is_action_pressed("keyboard_up"):
 			velocity.y -= 1;
-			rotation_degrees = 0
+			$hitbox.rotation_degrees = 0
 			last_direction = "up"
 			sprite.animation = "idle_up"
 		if Input.is_action_pressed("keyboard_left"):
 			velocity.x -= 1;
-			rotation_degrees = -90
+			$hitbox.rotation_degrees = -90
 			last_direction = "left"
 			sprite.flip_h = true
 			sprite.animation = "idle_side"
 		if Input.is_action_pressed("keyboard_right"):
 			velocity.x += 1;
-			rotation_degrees = 90
+			$hitbox.rotation_degrees = 90
 			last_direction = "right"
 			sprite.flip_h = false
 			sprite.animation = "idle_side"
